@@ -1,0 +1,29 @@
+# This workflow will build a Java project with Maven
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: CI with Docker
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: argeualcantara/actions/semantic-version@main
+      id: semantic-version
+      with:
+        version-major-minor: '1.0'
+    - uses: argeualcantara/actions/docker-build-push@main
+      id: docker-login-build-push
+      with:
+        repo: k8s-api-service
+        version: ${{ steps.semantic-version.outputs.version }}
+        dockerHubLogin: argeualcantara
+        dockerHubPassword: ${{ secrets.DOCKER_HUB_PASS }}
+        push: ${{ github.ref == 'refs/heads/main' }}
+        context: "."
