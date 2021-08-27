@@ -10,6 +10,10 @@ const pods = {
         k8sApi.listNamespacedPod(req.params.namespace).then((res) => {
             console.log(res.body);
             methodResponse.send(res.body);
+        },
+        (err) => {
+            console.log(err);
+            methodResponse.send(err);
         });
     }
 }
