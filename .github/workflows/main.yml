@@ -21,7 +21,7 @@ jobs:
     - uses: argeualcantara/actions/docker-build-push@main
       id: docker-login-build-push
       with:
-        repo: maven-spring-helloworld
+        repo: k8s-api-service
         version: ${{ steps.semantic-version.outputs.version }}
         dockerHubLogin: argeualcantara
         dockerHubPassword: ${{ secrets.DOCKER_HUB_PASS }}
