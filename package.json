@@ -1,0 +1,15 @@
+{
+  "name": "node-k8s-service",
+  "version": "1.0.0",
+  "description": "K8S API service example",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Argeu Alcantara",
+  "license": "MIT",
+  "dependencies": {
+    "@kubernetes/client-node": "^0.14.1",
+    "express": "^4.17.1"
+  }
+}
