@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: k8s-api
-        image: argeualcantara/k8s-api-example:latest
+        image: argeualcantara/k8s-api-service:latest
         ports:
         - containerPort: 3000
 ---
