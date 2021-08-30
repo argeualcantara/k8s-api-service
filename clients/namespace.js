@@ -13,7 +13,7 @@ const namespace = {
                 methodResponse.send(response.body);
             },
             (err) => {
-                console.log('Error!: ' + err);
+                console.log('Error!: ' + JSON.stringify(err));
                 methodResponse.send(err);
             },
         );
@@ -34,11 +34,11 @@ const namespace = {
         k8sApi.createNamespace(namespace).then(
             (response) => {
                 console.log('Created namespace');
-                console.log(response.body);
+                console.log(JSON.stringify(response.body));
                 methodResponse.send(response.body);
             },
             (err) => {
-                console.log('Error!: ' + err);
+                console.log('Error!: ' + JSON.stringify(err));
                 methodResponse.send(err);
             },
         );

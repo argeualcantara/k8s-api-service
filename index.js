@@ -6,6 +6,7 @@ const podClient = require("./clients/pod");
 
 const app = express();
 const port = 3000;
+const intervalTimeInMillis = 9000;
 
 app.get('/namespace', (req, res) => {
     nsClient.listNamespace(k8s, req, res);
@@ -21,4 +22,7 @@ app.get('/namespace/:namespace/pods', (req, res) => {
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
+  setInterval(() => {
+    podClient.observePodRestart(k8s, "kube-system");
+  }, intervalTimeInMillis);
 })
