@@ -99,6 +99,7 @@ paths:
 definitions:
   DeployApp:
     type: "object"
+    required: ["name", "image", "port", "appPath"]
     properties:
       name:
         type: "string"
@@ -111,6 +112,8 @@ definitions:
         type: "string"
   Namespace:
     type: "object"
+    required: ["name"]
     properties:
       name:
         type: "string"
+        required: true

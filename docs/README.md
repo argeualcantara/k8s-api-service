@@ -102,13 +102,13 @@ List pods from the speficied namespace
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| name | string |  | No |
-| image | string |  | No |
-| port | long |  | No |
-| appPath | string |  | No |
+| name | string |  | Yes |
+| image | string |  | Yes |
+| port | long |  | Yes |
+| appPath | string |  | Yes |
 
 #### Namespace
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| name | string |  | No |
+| name | string |  | Yes |
