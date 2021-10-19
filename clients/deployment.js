@@ -41,19 +41,23 @@ async function createDeployment (k8sApi, req, res) {
                         {
                             name: data.name,
                             image: data.image,
-                            ports: []
+                            ports: [
+                                {
+                                    containerPort: data.port
+                                }
+                            ]
                         }
                     ]
                 }
             }
         }
     };
-    for(var i=0; i<data.ports.length; i++) {
-        var portObject = {
-            containerPort: data.ports[i]
-        }
-        deploy.spec.template.spec.containers[0].ports.push(portObject);
-    }
+    // for(var i=0; i<data.ports.length; i++) {
+    //     var portObject = {
+    //         containerPort: data.ports[i]
+    //     }
+    //     deploy.spec.template.spec.containers[0].ports.push(portObject);
+    // }
     
     try {
         const response = await k8sApi.createNamespacedDeployment(namespaceName, deploy)

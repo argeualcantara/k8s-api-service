@@ -15,6 +15,6 @@ Body:
 {
     "name": "<deployment-name>", 
     "image": "argeualcantara/k8s-api-service:latest",
-    "ports": [3000]
+    "port": 3000
 }
 ```
