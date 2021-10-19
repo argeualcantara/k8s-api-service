@@ -1,0 +1,118 @@
+swagger: "2.0"
+info:
+  description: "This is an API to manage kubernetes resources"
+  version: "1.0.0"
+  title: "K8s API"
+  contact:
+    email: "a.argeu@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+basePath: "/api"
+
+schemes:
+- "http"
+paths:
+  /namespace:
+    get:
+      tags:
+      - "namespace"
+      summary: "List namespaces"
+      description: "List namespaces from the running cluster"
+      operationId: "listNamespace"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "Success"
+    post:
+      tags:
+      - "namespace"
+      summary: "Create namespace"
+      description: "Create namespace in the cluster"
+      operationId: "createNamespace"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "body"
+        in: "body"
+        description: "Status values that need to be considered for filter"
+        required: true
+        schema:
+          type: "object"
+          $ref: "#/definitions/Namespace"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid status value"
+
+  /namespace/{namespaceName}/deploy:
+    post:
+      tags:
+      - "deploy"
+      summary: "Deploy application to namespace"
+      description: "Deploys application to the specified namespace in path"
+      operationId: "deployApp"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "namespaceName"
+        in: "query"
+        description: "Name of an existing namespace"
+        required: true
+        type: "string"
+      - name: "body"
+        in: "body"
+        description: "Deploy app parameters"
+        required: true
+        schema:
+          type: "object"
+          $ref: "#/definitions/DeployApp"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid value"
+
+  /namespace/{namespaceName}/pods:
+    get:
+      tags:
+      - "deploy"
+      summary: "List pods"
+      description: "List pods from the speficied namespace"
+      operationId: "listPods"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "namespaceName"
+        in: "query"
+        description: "Name of an existing namespace"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid value"
+
+definitions:
+  DeployApp:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      image:
+        type: "string"
+      port:
+        type: "integer"
+        format: "int64"
+      appPath:
+        type: "string"
+  Namespace:
+    type: "object"
+    properties:
+      name:
+        type: "string"

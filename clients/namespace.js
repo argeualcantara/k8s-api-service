@@ -27,7 +27,7 @@ const namespace = {
     
         var namespace = {
             metadata: {
-                name: req.params.namespace,
+                name: req.body.name,
             },
         };
     
