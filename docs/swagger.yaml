@@ -41,7 +41,6 @@ paths:
         description: "Status values that need to be considered for filter"
         required: true
         schema:
-          type: "object"
           $ref: "#/definitions/Namespace"
       responses:
         "200":
@@ -60,7 +59,7 @@ paths:
       - "application/json"
       parameters:
       - name: "namespaceName"
-        in: "query"
+        in: "path"
         description: "Name of an existing namespace"
         required: true
         type: "string"
@@ -69,7 +68,6 @@ paths:
         description: "Deploy app parameters"
         required: true
         schema:
-          type: "object"
           $ref: "#/definitions/DeployApp"
       responses:
         "200":
@@ -88,7 +86,7 @@ paths:
       - "application/json"
       parameters:
       - name: "namespaceName"
-        in: "query"
+        in: "path"
         description: "Name of an existing namespace"
         required: true
         type: "string"

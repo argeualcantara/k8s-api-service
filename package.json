@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "md-docs": "swagger-markdown -i docs/swagger.yaml -o docs/README.md"
   },
   "author": "Argeu Alcantara",
   "license": "MIT",
   "dependencies": {
     "@kubernetes/client-node": "^0.14.1",
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "swagger-markdown": "^1.4.3"
   }
 }
