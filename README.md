@@ -15,6 +15,7 @@ Body:
 {
     "name": "<deployment-name>", 
     "image": "argeualcantara/k8s-api-service:latest",
-    "port": 3000
+    "port": 3000,
+    "appPath": "/myapp"
 }
 ```

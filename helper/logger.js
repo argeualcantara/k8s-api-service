@@ -1,6 +1,10 @@
 const logger = {
     "err": (err) => {
-        console.log('Error!: ' + err.response.statusCode + ': ' + err.response.body.message);
+        if(err.response) {
+            console.log('Error!: ' + err.response.statusCode + ': ' + err.response.body.message);
+        } else {
+            console.log(err);
+        }
     },
     "log": (str) => {
         console.log(str);

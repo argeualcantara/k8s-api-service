@@ -24,12 +24,9 @@ app.get('/namespace/:namespace/pods', (req, res) => {
 })
 
 app.post('/namespace/:namespace/deploy', (req, res) => {
-  deployClient.createDeploy(k8s, req, res);
+  deployClient.deployApp(k8s, req, res);
 })
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
-  // setInterval(() => {
-  //   podClient.observePodRestart(k8s, "kube-system");
-  // }, intervalTimeInMillis);
 })
