@@ -1,6 +1,5 @@
 const express = require('express')
 const k8s = require('@kubernetes/client-node');
-
 const nsClient = require("./clients/namespace");
 const podClient = require("./clients/pod");
 const deployClient = require("./clients/deployment");
